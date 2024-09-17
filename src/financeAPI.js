@@ -1,45 +1,74 @@
 const axios = require('axios');
 
 // Your RapidAPI credentials
-const API_KEY = process.env.RAPIDAPI_KEY || '19668c176bmsha76050a4b747794p188878jsnd448d56c8fd9';
+const API_KEY = '19668c176bmsha76050a4b747794p188878jsnd448d56c8fd9';
 const API_HOST = 'yahoo-finance15.p.rapidapi.com';
-const BASE_URL = 'https://yahoo-finance15.p.rapidapi.com/api/v1/markets';
 
-// Utility function to make requests
-async function makeRequest(endpoint, params = {}) {
+// Function to get most active stock options
+async function getMostActiveOptions(type = 'STOCKS') {
+    const BASE_URL = 'https://yahoo-finance15.p.rapidapi.com/api/v1/markets/options/most-active';
   try {
-    const response = await axios.get(`${BASE_URL}/${endpoint}`, {
-      params,
+    const response = await axios.get(BASE_URL, {
+      params: { type },
       headers: {
         'x-rapidapi-key': API_KEY,
         'x-rapidapi-host': API_HOST
       }
     });
+    
     return response.data;
   } catch (error) {
-    console.error(`Error fetching data from ${endpoint}:`, error);
+    console.error('Error fetching most active options:', error);
     throw error;
   }
 }
 
-// Function to get most active stock options
-async function getMostActiveOptions(type = 'STOCKS') {
-  return await makeRequest('options/most-active', { type });
-}
+async function getStockModules() {
+    const BASE_URL = 'https://yahoo-finance15.p.rapidapi.com/api/v1/markets/stock/modules'
 
-// Function to get stock quote by symbol
-async function getStockQuote(symbol) {
-  return await makeRequest(`quote/${symbol}`);
-}
+try {
+    const response = await axios.get(BASE_URL, {
+        params: {
+            ticker: 'AAPL',      // user should be able to choose which stock to see here. Like TSLA or AAPL etc. 
+            module: 'asset-profile'
+          },
+          headers: {
+               'x-rapidapi-key': API_KEY,
+        'x-rapidapi-host': API_HOST
+          }
+        })
+        return response.data;
+    } catch (error) {
+      console.error('Error fetching stock modules:', error);
+      throw error;
+    }
+  }
 
-// Function to get historical stock data
-async function getHistoricalData(symbol, startDate, endDate) {
-  return await makeRequest(`historical/${symbol}`, { start: startDate, end: endDate });
-}
+  async function getMarketNews() {
+    const BASE_URL = 'https://yahoo-finance15.p.rapidapi.com/api/v2/markets/news'
 
-// Export all functions as part of the module
+try {
+    const response = await axios.get(BASE_URL, {
+        params: {
+            tickers: 'NVDA',                        // how do these two lines work? The user should be able to send specific information to this and then get news related to that topic.
+            type: 'ALL'
+          },
+          headers: {
+               'x-rapidapi-key': API_KEY,
+        'x-rapidapi-host': API_HOST
+          }
+        })
+        return response.data;
+    } catch (error) {
+      console.error('Error fetching market news:', error);
+      throw error;
+    }
+  }
+
+// Export the function
 module.exports = {
   getMostActiveOptions,
-  getStockQuote,
-  getHistoricalData
+  getStockModules,
+  getMarketNews
 };
+

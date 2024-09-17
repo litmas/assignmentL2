@@ -1,18 +1,37 @@
-const financeAPI = require('./financeAPI');
+const financeAPI = require('./src/financeAPI');
 
-async function main() {
+/* async function activeOptions() {
   try {
-    const mostActiveOptions = await financeAPI.getMostActiveOptions('STOCKS');
-    console.log('Most Active Stock Options:', mostActiveOptions);
-
-    const stockQuote = await financeAPI.getStockQuote('AAPL');
-    console.log('Apple Stock Quote:', stockQuote);
-
-    const historicalData = await financeAPI.getHistoricalData('AAPL', '2023-01-01', '2023-12-31');
-    console.log('Apple Historical Data:', historicalData);
+    const activeOptions = await financeAPI.getMostActiveOptions('STOCKS');
+    console.log('Most Active Stock Options:', activeOptions);
   } catch (error) {
     console.error('Error:', error);
   }
-}
+} */
 
-main();
+/* async function stockModules() {
+    try {
+      const activeOptions = await financeAPI.getStockModules();
+      console.log('Stock Modules:', activeOptions);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  } */
+
+  async function marketNews() {
+    try {
+      const activeOptions = await financeAPI.getMarketNews();
+      console.log('Stock Modules:', activeOptions);
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+  
+  
+
+
+/* activeOptions(); */
+/* stockModules(); */
+marketNews();
+
+
