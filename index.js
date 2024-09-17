@@ -1,37 +1,20 @@
-const financeAPI = require('./src/financeAPI');
+const YahooFinanceClient = require('./src/financeAPI');
 
-/* async function activeOptions() {
+async function main() {
+  const apiClient = new YahooFinanceClient('API_KEY', 'API_HOST');
+
   try {
-    const activeOptions = await financeAPI.getMostActiveOptions('STOCKS');
+    const activeOptions = await apiClient.getMostActiveOptions('STOCKS');
     console.log('Most Active Stock Options:', activeOptions);
+
+    const stockModules = await apiClient.getStockModules('AAPL', 'asset-profile');
+    console.log('Stock Modules:', stockModules);
+
+    const marketNews = await apiClient.getMarketNews('NVDA', 'ALL');
+    console.log('Market News:', marketNews);
   } catch (error) {
     console.error('Error:', error);
   }
-} */
+}
 
-/* async function stockModules() {
-    try {
-      const activeOptions = await financeAPI.getStockModules();
-      console.log('Stock Modules:', activeOptions);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  } */
-
-  async function marketNews() {
-    try {
-      const activeOptions = await financeAPI.getMarketNews();
-      console.log('Stock Modules:', activeOptions);
-    } catch (error) {
-      console.error('Error:', error);
-    }
-  }
-  
-  
-
-
-/* activeOptions(); */
-/* stockModules(); */
-marketNews();
-
-
+main();
