@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Workout Module Test App</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Workout Module Test App</h1>
+
+        <form id="generateExerciseForm">
+            <h2>Generate Exercises</h2>
+            
+            <label for="exerciseMuscle">Muscle:</label>
+            <input type="text" id="exerciseMuscle" placeholder="t.ex chest" required>
+
+            <label for="exerciseType">Type:</label> 
+            <input type="text" id="exerciseType" placeholder="t.ex cardio" required>
+
+            <label for="exerciseDifficulty">Difficulty:</label>
+            <input type="text" id="exerciseDifficulty" placeholder="t.ex beginner" required>
+
+            <button type="submit">Generate Exercises</button>
+        </form>
+        <div id="exerciseResultDisplay"></div>
+
+  </div>   
+    <script type="module" src="index.js"></script>
+</body>
+</html>
