@@ -18,15 +18,10 @@ h1 {
     text-align: center;
 }
 
-h2 {
-    margin-top: 30px;
-}
-
 form {
     display: flex;
     flex-direction: column;
     gap: 10px;
-    margin-bottom: 30px;
 }
 
 label {
@@ -52,15 +47,10 @@ button:hover {
     background-color: #218838;
 }
 
-#exerciseResultDisplay, #workoutResultDisplay, #splitResultDisplay {
+#resultDisplay {
     margin-top: 20px;
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
     background-color: #f9f9f9;
-}
-
-pre {
-    white-space: pre-wrap;
-    word-wrap: break-word;
 }

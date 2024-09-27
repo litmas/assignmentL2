@@ -1,16 +1,16 @@
 
 import { getExerciseData, getShoulderData } from './exerciseAPI.js';
 
-export const generateExercises = async (muscle, type = '', difficulty = '') => {
+export const generateExercises = async (muscle, type = '', difficulty = '') => {     
   try {
     const exerciseData = await getExerciseData(muscle, type, difficulty);
+    return exerciseData
   } catch (error) {
     console.error('Error in tracking exercises:', error);
   }
 };
-/* generateExercises('triceps', 'strength', 'beginner') */
 
-export const createWorkout = async (muscleGroups, type = '', difficulty = '') => {
+export const createWorkout = async (muscleGroups, type = '', difficulty = '') => {      // add maximum 5 exercises.
   try {
     let workoutPlan = {};
 
@@ -33,17 +33,12 @@ export const createWorkout = async (muscleGroups, type = '', difficulty = '') =>
         workoutPlan[muscle] = exerciseData;  
       }
     }
-    return workoutPlan;
+    return workoutPlan
   } catch (error) {
     console.error('Error creating workout:', error);
     throw error;
   }
 };
-
-
-const muscleGroups = ['shoulders'];  
-const type = 'strength';                 // optional. Data that can be used: cardio, olympic_weightlifting, plyometrics, powerlifting, strength, stretching, strongman
-const difficulty = 'beginner';           // optional. Data that can be used: beginner, intermediate, expert 
 
 /* createWorkout(['triceps', 'chest', 'shoulders', 'strength', 'beginner']) */
 
@@ -124,15 +119,16 @@ export const createWorkoutSplit = async (splitType, type = 'strength', difficult
           workoutPlan[`Day ${day.day}`] = dailyWorkout;
         }
       }
-      return ('Weekly Workout Plan:', JSON.stringify(workoutPlan, null, 2));
-      return workoutPlan;
+  
+    return workoutPlan
+    
     } catch (error) {
       console.error('Error creating workout split:', error);
       throw error;
     }
   };
 
-createWorkoutSplit('pplSplit', 'strength', 'beginner')
+/* createWorkoutSplit('pplSplit', 'strength', 'beginner') */
 
 // store the user's workouts in a JSON file where they can also say the reps, sets and weight that they took using fs and then display the data if they want to see it.  
 
