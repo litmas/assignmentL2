@@ -1,2 +1,3 @@
 # assignmentL2
-Using a finance API in a module. 
+
+This is a workout module that uses the Exercise API from API Ninjas. 
