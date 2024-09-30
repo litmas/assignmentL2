@@ -1,11 +1,10 @@
-import { generateExercises, createWorkout, createWorkoutSplit } from "./src/fitnessTracker.js";
+import { generateExercises, createWorkout, createWorkoutSplit, getRecommendedRepsAndSets, getExerciseTips } from "./src/fitnessTracker.js";
 
 // Select DOM elements for the forms and result displays
 const generateExerciseForm = document.getElementById("generateExerciseForm");
 const exerciseResultDisplay = document.getElementById("exerciseResultDisplay");
 const createWorkoutForm = document.getElementById("createWorkoutForm");
 const workoutResultDisplay = document.getElementById("workoutResultDisplay");
-
 const workoutSplitForm = document.getElementById("workoutSplitForm");
 const splitResultDisplay = document.getElementById("splitResultDisplay");
 
@@ -39,6 +38,18 @@ generateExerciseForm.addEventListener("submit", async (event) => {
         Muscle: ${exercise.muscle}<br>
         Difficulty: ${exercise.difficulty}<br>
         Instructions: ${exercise.instructions}</p>`).join('');
+
+            // Display recommended sets and reps
+      const recommendations = getRecommendedRepsAndSets(difficulty);
+      exerciseResultDisplay.innerHTML += `
+        <p><strong>Recommended Sets:</strong> ${recommendations.sets}</p>
+        <p><strong>Recommended Reps:</strong> ${recommendations.reps}</p>`;
+
+      // Display exercise tips
+      const tips = getExerciseTips(type);
+      exerciseResultDisplay.innerHTML += `
+        <p><strong>Exercise Tips:</strong> ${tips}</p>`;
+      
     } else {
       exerciseResultDisplay.innerHTML = `<p>No exercises found for the selected criteria.</p>`;
     }
@@ -49,10 +60,8 @@ generateExerciseForm.addEventListener("submit", async (event) => {
   }
 });
 
-
-
 // Create Workout Function
-createWorkoutForm.addEventListener("submit", async (event) => {   // muscles.join is not a function
+createWorkoutForm.addEventListener("submit", async (event) => {
   event.preventDefault();
   
   // Get user input values

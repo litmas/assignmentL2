@@ -1,4 +1,3 @@
-
 import { getExerciseData, getShoulderData } from './exerciseAPI.js';
 
 export const generateExercises = async (muscle, type = '', difficulty = '') => {     
@@ -10,7 +9,7 @@ export const generateExercises = async (muscle, type = '', difficulty = '') => {
   }
 };
 
-export const createWorkout = async (muscleGroups, type = '', difficulty = '') => {      // add maximum 5 exercises.
+export const createWorkout = async (muscleGroups, type = '', difficulty = '') => {     
   try {
     let workoutPlan = {};
 
@@ -128,8 +127,26 @@ export const createWorkoutSplit = async (splitType, type = 'strength', difficult
     }
   };
 
-/* createWorkoutSplit('pplSplit', 'strength', 'beginner') */
+  // Suggests reps and sets based on difficulty level
+export const getRecommendedRepsAndSets = (difficulty) => {
+  const recommendations = {
+    beginner: { sets: 3, reps: "10-12" },
+    intermediate: { sets: 4, reps: "8-10" },
+    advanced: { sets: 5, reps: "6-8" }
+  };
 
-// store the user's workouts in a JSON file where they can also say the reps, sets and weight that they took using fs and then display the data if they want to see it.  
+  return recommendations[difficulty] || { sets: 3, reps: 10 };
+};
 
-// This means that the module will need user input and for them to enter in the weight they took for each set and how many reps they did. This seems pretty cool and interesting to make. 
+// Provides exercise tips for specific muscle groups or types of exercises
+export const getExerciseTips = (exerciseType) => {
+  const tips = {
+    strength: "Focus on form over weight. Lift heavier but with control.",
+    strongman: "Focus on lifting heavy whilst also maintaining control of the weight to reduce risk of injury.",
+    flexibility: "Hold stretches for at least 30 seconds, don't rush.",
+    chest: "Ensure proper range of motion; avoid bouncing weights off the chest.",
+    back: "Engage the lats throughout and maintain a neutral spine."
+  };
+
+  return tips[exerciseType] || "Stay hydrated and maintain proper form.";
+};
