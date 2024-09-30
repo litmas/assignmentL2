@@ -1,4 +1,4 @@
-import { getExerciseData, getShoulderData } from './exerciseAPI.js';
+import { getExerciseData, getShoulderData } from '../API/exerciseAPI.js';
 
 export const generateExercises = async (muscle, type = '', difficulty = '') => {     
   try {
