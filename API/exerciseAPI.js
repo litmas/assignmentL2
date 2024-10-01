@@ -8,6 +8,15 @@ const options = {
 };
 let baseURL = 'https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises';
 
+/**
+ * Retrieves exercise data from the API based on muscle, type, and difficulty parameters.
+ *
+ * @param {string} muscle - The muscle for which to retrieve exercise data.
+ * @param {string} [type=''] - The type of exercise (optional).
+ * @param {string} [difficulty=''] - The difficulty level of exercise (optional).
+ * @returns {Promise<any>} - A promise that resolves to the fetched exercise data.
+ * @throws {Error} - If there is an error fetching the exercise data.
+ */
 export const getExerciseData = async (muscle, type = '', difficulty = '') => {
   try {
     let url = `${baseURL}?muscle=${muscle}`;
@@ -23,11 +32,19 @@ export const getExerciseData = async (muscle, type = '', difficulty = '') => {
   }
 };
 
-export const getShoulderData = (muscle, type = '', difficulty = '') => { 
+/**
+ * Retrieves shoulder exercises based on specified filters.
+ *
+ * @param {string} muscle - The target muscle group for the exercises.
+ * @param {string} type - The type of exercise (Strength, Powerlifting, Strongman).
+ * @param {string} difficulty - The difficulty level of the exercise (Beginner, Intermediate, Expert).
+ * @returns {Array} - An array of objects representing matching shoulder exercises.
+ */
+export const getShoulderData = (muscle, type = '', difficulty = '') => {
     const shoulderExercises = [
         {
             "name": "Overhead Press",
-            "type": "Strength", 
+            "type": "Strength",
             "muscle": "Shoulders",
             "equipment": "Dumbbells",
             "difficulty": "Expert",
@@ -35,7 +52,7 @@ export const getShoulderData = (muscle, type = '', difficulty = '') => {
         },
         {
            "name": "Lateral Raise",
-            "type": "Strength", 
+            "type": "Strength",
             "muscle": "Shoulders",
             "equipment": "Dumbbells",
             "difficulty": "Intermediate",
@@ -43,7 +60,7 @@ export const getShoulderData = (muscle, type = '', difficulty = '') => {
         },
         {
             "name": "Cable Lateral Raise",
-             "type": "Strength", 
+             "type": "Strength",
              "muscle": "Shoulders",
              "equipment": "Cable Machine",
              "difficulty": "Beginner",
@@ -51,7 +68,7 @@ export const getShoulderData = (muscle, type = '', difficulty = '') => {
          },
          {
             "name": "Front Raise",
-             "type": "Powerlifting", 
+             "type": "Powerlifting",
              "muscle": "Shoulders",
              "equipment": "Dumbbells",
              "difficulty": "Beginner",
@@ -59,31 +76,31 @@ export const getShoulderData = (muscle, type = '', difficulty = '') => {
          },
          {
             "name": "Arnold Press",
-             "type": "Powerlifting", 
+             "type": "Powerlifting",
              "muscle": "Shoulders",
              "equipment": "Dumbbells",
              "difficulty": "Intermediate",
              "instructions": "The Arnold Press is a variation of the military press, but one that more effectively hits all three heads (the front, lateral, and rear) of your deltoids. Grab two dumbbells and whilst standing lift them above your shoudlers. After that press up the way, similar to an overhead press."
          },
          {
-            "name": "Circus Dumbbell Press", 
-             "type": "Strongman", 
+            "name": "Circus Dumbbell Press",
+             "type": "Strongman",
              "muscle": "Shoulders",
              "equipment": "Dumbbell",
              "difficulty": "Expert",
              "instructions": "First is the clean to the shoulder. Grab the dumbbell with either one or both hands (if you need the extra stability). Keep your feet shoulder-width apart or slightly further out for more stability. From here, bend your knees and pull the dumbbell to your shoulder, using the momentum from your hips. Take your other hand off the dumbbell and use it as a counter weight.Once you have yourself steady, take a breath to brace your core, then press the dumbbell overhead and lock out your elbow. As the weight of the dumbbell goes up, you will need to adopt a push press or split jerk stance. I would recommend a push press unless you have a solid Olympic lifting background."
          },
          {
-            "name": "Viking Press", 
-             "type": "Strongman", 
+            "name": "Viking Press",
+             "type": "Strongman",
              "muscle": "Shoulders",
              "equipment": "Barbell/Machine",
              "difficulty": "Intermediate",
              "instructions": "The viking press is usually a rep-based event in a given time frame, typically 60 seconds. It's a neutral grip press, meaning your hands face inward. It's hard to find a gym with equipment specific to the viking press, even in strongman gyms. But fear not! You can easily mimic this movement with a power rack, two barbells and safety bars.At your power rack, set one side of the safety pins at shoulder height and the other side at the next lowest setting. On the lower setting, sandwich the safety pin between two 5kg (10lb) plates with collars on each end. There will be a space between the two plates where the barbell sits on the safety bar. On the higher side, stand outside the power rack and load the plates for your desired weight.From here, use the ends of the two barbells as handles. You can either strict press or push press the weight up. A “good lift” is given once the body is straight, elbows locked and head through."
          },
          {
-            "name": "Barbell Military Press", 
-             "type": "Powerlifting", 
+            "name": "Barbell Military Press",
+             "type": "Powerlifting",
              "muscle": "Shoulders",
              "equipment": "Barbell",
              "difficulty": "Expert",
