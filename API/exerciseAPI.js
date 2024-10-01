@@ -6,7 +6,7 @@ const options = {
     'x-rapidapi-host': 'exercises-by-api-ninjas.p.rapidapi.com'
   }
 };
-let baseURL = 'https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises';
+const baseURL = 'https://exercises-by-api-ninjas.p.rapidapi.com/v1/exercises';
 
 /**
  * Retrieves exercise data from the API based on muscle, type, and difficulty parameters.
