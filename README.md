@@ -6,11 +6,19 @@ This is a workout module that uses the Exercise API from API Ninjas.
 
 Simply create a new visual studio project or open an existing project. Clone this github repo: https://github.com/litmas/assignmentL2 and add it into your project by running git clone '...'. After that, all you need to do is import the functions into your index.js or whichever file you want to use. And run the functions below:
 
-generateExercises('biceps', 'strength', 'intermediate')
-createWorkout(['triceps', 'chest', 'shoulders', 'strength', 'beginner'])
-createWorkoutSplit('fourDaySplit', 'strongman', 'intermediate')
-getRecommendedRepsAndSets('beginner')
-getExerciseTips('chest')
+    import ExerciseGenerator from "./workoutModule/exerciseGenerator.js";
+    import WorkoutPlanner from "./workoutModule/workoutPlanner.js";
+    import WorkoutUtility from "./workoutModule/workoutUtility.js";
+
+    const exerciseGenerator = new ExerciseGenerator()
+    const workoutPlanner = new WorkoutPlanner();
+    const workoutUtility = new WorkoutUtility();
+
+    exerciseGenerator.generateExercises('biceps', 'strength', 'intermediate')
+    workoutPlanner.createWorkout(['triceps', 'chest', 'shoulders', 'strength', 'beginner'])
+    workoutPlanner.createWorkoutSplit('fourDaySplit', 'strongman', 'intermediate')
+    workoutUtility.getRecommendedRepsAndSets('beginner')
+    workoutUtility.getExerciseTips('chest')
 
 #### Note that the Exercise API only takes certain parameters. This is the link to the docs: [API Ninjas Docs for the Exercise API](https://api-ninjas.com/api/exercises).
 
