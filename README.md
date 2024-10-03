@@ -8,7 +8,7 @@ Simply create a new visual studio project or open an existing project. Clone thi
 
 generateExercises('biceps', 'strength', 'intermediate')
 createWorkout(['triceps', 'chest', 'shoulders', 'strength', 'beginner'])
-createWorkout('fourDaySplit', 'strongman', 'intermediate')
+createWorkoutSplit('fourDaySplit', 'strongman', 'intermediate')
 getRecommendedRepsAndSets('beginner')
 getExerciseTips('chest')
 
