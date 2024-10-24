@@ -12,11 +12,20 @@ class ExerciseGenerator {
    */
   async generateExercises(muscle, type = '', difficulty = '') {
     try {
-      const exercisesFromAPI = await getExerciseData(muscle, type, difficulty);
-      return exercisesFromAPI;
+      return await getExerciseData(muscle, type, difficulty);
     } catch (error) {
-      console.error('Error in generating exercises:', error);
+      this.logError('generateExercises', error);
+      throw new Error('Failed to generate exercises');
     }
+  }
+
+  /**
+   * Logs errors for debugging purposes.
+   * @param {string} functionName - The name of the function where the error occurred.
+   * @param {Error} error - The error object.
+   */
+  logError(functionName, error) {
+    console.error(`Error in ${functionName}:`, error);
   }
 }
 
