@@ -1,6 +1,14 @@
-import { getExerciseData, getShoulderData } from '../API/exerciseAPI.js';
+import { getExerciseData } from '../API/exerciseAPI.js'
 
+
+/**
+ * Generates exercises based on the specified muscle, type, and difficulty.
+ *
+ * @async
+ * @returns {Promise<Array>} - A promise that resolves to an array of exercises.
+ */
 class ExerciseGenerator {
+  
   /**
    * Generates exercises based on the specified muscle, type, and difficulty.
    *
@@ -10,23 +18,24 @@ class ExerciseGenerator {
    * @param {string} [difficulty=''] - The difficulty level of exercises to be generated. (Optional)
    * @returns {Promise<Array>} - A promise that resolves to an array of exercises.
    */
-  async generateExercises(muscle, type = '', difficulty = '') {
+  async generateExercises (muscle, type = '', difficulty = '') {
     try {
-      return await getExerciseData(muscle, type, difficulty);
+      return await getExerciseData(muscle, type, difficulty)
     } catch (error) {
-      this.logError('generateExercises', error);
-      throw new Error('Failed to generate exercises');
+      this.logError('generateExercises', error)
+      throw new Error('Failed to generate exercises')
     }
   }
 
   /**
    * Logs errors for debugging purposes.
+   *
    * @param {string} functionName - The name of the function where the error occurred.
    * @param {Error} error - The error object.
    */
-  logError(functionName, error) {
-    console.error(`Error in ${functionName}:`, error);
+  logError (functionName, error) {
+    console.error(`Error in ${functionName}:`, error)
   }
 }
 
-export default ExerciseGenerator;
+export default ExerciseGenerator
